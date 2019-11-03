@@ -16,7 +16,7 @@ d['field'] = int(d['field'])
 7.Which of the libraries below are correctly paired with what we have used them for?  
 json - Lets you parse JSON through strings or files  
 gzip - Unzip a gzipped dataset to read it into Python  ast - Double-checks that the line of code to be executed is legitimate Python  
-csv - Lets you parse CSV or TSV files.
+csv - Lets you parse CSV or TSV files.  
 8.W​hat is the output of the code below?  
 ```html
 string = "seller_id, product_id, price, customer_id, review_id"
