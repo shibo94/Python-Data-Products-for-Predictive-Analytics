@@ -28,7 +28,7 @@ W​hen we want to extract features from data
 string = ['hello', 'mam', 'why']
 ', '.join(string)
 ```
-"​hello, mam, why"
+"​hello, mam, why"  
 4.W​hich libraries are useful for processing time data?  
 d​atetime  
 (This library is a combination of date and time. See more at this link: https://docs.python.org/2/library/datetime.html#available-types)  
