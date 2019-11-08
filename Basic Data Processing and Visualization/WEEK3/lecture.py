@@ -100,3 +100,35 @@ string.rstrip()
 # Time.strftime : convert a time object to a string
 # Time.maketime/calendar.timegem: convert a time object to a number
 # Time.gmtime: convert a number to a time object
+import time
+import calendar
+timeString = "2018-07-26 01:36:02"
+timeStruct = time.strptime(timeString, "%Y-%m-%d %H:%M:%S")
+timeStruct
+[out]:time.struct_time(tm_year=2018, tm_mon=7, tm_mday=26, tm_hour=1,tm_min=36, tm_sec=2, tm_wday=3, tm_yday=207, im_isdst=-1)
+t1 = calendar.timegm(timeStruct)
+t2 = time.mktime(timeStruct)
+t1,t2
+[out](1532568962,1532594162.0)
+t1 + 60*60*24*5 # five days later
+# mktime assumes the structure is a local time
+# timegm assumes the structure is a UTC time
+time.gmtime(t1 + 60*60*24*5)
+[out]time.struct_time(tm_year=2018.....)
+time.strftime("%Y-%m-%d %H:%M:%S",time.gmtime(t1+60*60*24*5))
+
+#L4 Livecoding: Time and Date Data
+import json
+path = "datasets/yelp_data/review.json"
+f= =open(path, 'r', encoding = 'utf8')
+dataset = []
+for i in range(50000):
+    dataset.append(json.loads(f.readline()))
+dataset[0]
+timeString = dataset[0]['date']
+print(timeString)
+import time
+timeStruct = time.strptime(timeString,"%Y-%m-%d")
+timeStruct
+help(time.strptime)
+time.strptime("21:36:18, 28/5/2019", "%H:%M:%S, %d/%m/%Y")
