@@ -17,3 +17,22 @@ R​eview quality
 U​ser activity  
 R​eview rating D​ate  
 User location  
+
+# Review: Processing Different Data Types
+1.What is tokenization (in the context of this module)?  
+The act of splitting a string into dicrete "tokens" by a defined delimiter  
+2.W​hen would strptime() be convenient?  
+W​hen we want to extract features from data  
+3.W​hat is the output of the code below?  
+```html
+string = ['hello', 'mam', 'why']
+', '.join(string)
+```
+"​hello, mam, why"
+4.W​hich libraries are useful for processing time data?  
+d​atetime  
+(This library is a combination of date and time. See more at this link: https://docs.python.org/2/library/datetime.html#available-types)  
+c​alendar  
+(This library assumes each day has exactly 24*60*60 seconds. See more at this link: https://docs.python.org/2/library/calendar.html#module-calendar)  
+t​ime  
+(This library assumes each day has exactly 24*60*60 seconds. See more at this link: https://docs.python.org/2/library/datetime.html#available-types)
