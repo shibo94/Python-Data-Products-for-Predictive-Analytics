@@ -132,3 +132,16 @@ timeStruct = time.strptime(timeString,"%Y-%m-%d")
 timeStruct
 help(time.strptime)
 time.strptime("21:36:18, 28/5/2019", "%H:%M:%S, %d/%m/%Y")
+timeInt = time.mktime(timeStruct)
+[out]1464418800.0
+timeInt2 = time.mktime(time.strptime(datase[99]['data'], "%Y-%m-%d"))
+timeDiff = timeInt - timeInt2
+timeDiff
+[out]125712000.0
+timeDiff / 60
+2095200.0
+timeDiff /(60*60)
+34920.0
+timeDiff / (60*60*24)
+time.gmtime(timeInt)
+time.gmtime(timeInt + 60*60*24*7)
