@@ -9,7 +9,7 @@ import string
 string_list =['hello,','world']
 newwordlist = ''
 for word in string_list:
-    word.lower()
+    word = word.lower()
     newword= ''.join([x for x in word if not x in string.punctuation])
     if not newwordlist:
         newwordlist = newword
