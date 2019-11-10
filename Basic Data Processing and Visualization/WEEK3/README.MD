@@ -52,10 +52,10 @@ The number of seconds since January 1, 1970, in the UTC timezone
 We can more easily extract features from data  
 It converts a time string to a structured time object  
 //
-Time.strptime: time string --> structured time object
-Time.strftime: structured time object --> time string
-Time.mktime/calendar.timegm: structured time object --> number
-Time.gmtime: number --> structured time object
+Time.strptime: time string --> structured time object  
+Time.strftime: structured time object --> time string  
+Time.mktime/calendar.timegm: structured time object --> number  
+Time.gmtime: number --> structured time object  
 6.What is the difference between mktime() and gmtime()?  
 For the given time struct, mktime() assumes it is local time, gmtime() assumes it is UTC time.  
 7.Write a function named string_processing that takes a list of strings as input and returns an all-lowercase string with no punctuation.  
