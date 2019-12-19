@@ -43,6 +43,7 @@ W​e record our model's predictions and see how many of them match the actual o
 3.Y​ou have the following data and want to classify a point with X1 = 1, X2 = 2, X3 = 3 with K-Nearest Neighbors. What would this point be classified as if K = 3?  
 
 | X1 | X2 | X3 | Y​ |
+| ------ | ------ | ------ | ------ |
 | 0​ | 0 | 0​ | Cat |
 | 2​ | -​2 | 1​ | Dog |
 | 1​ | 1​ | 1​ | D​og |
