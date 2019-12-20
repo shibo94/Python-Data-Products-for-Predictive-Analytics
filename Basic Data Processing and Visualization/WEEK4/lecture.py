@@ -154,3 +154,5 @@ def parseReview(review):
     return d
 reviewDict = [parseReview(r) for r in reviews]
 reviewDict[0]
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(reviewDict[0])['reviewBlock']

@@ -61,6 +61,9 @@ arr[4] = 7
 axis()  
 6.When is it NOT acceptable to avoid axis labels in plots using matlibplot?  
 When you are presenting non-intuitive results to another person.  
-7.Which graphing method should you use to visualize the correlation between two arrays?  
+7.Which graphing method should you use to visualize the correlation between two arrays?
+
+S​catterplot  
+
 Box Plot(I​ncorrect. You would mainly use this to show the distributions of variables.)
 H​istogram(I​ncorrect. You would mainly use this to show the distribution of a numerical variable.)

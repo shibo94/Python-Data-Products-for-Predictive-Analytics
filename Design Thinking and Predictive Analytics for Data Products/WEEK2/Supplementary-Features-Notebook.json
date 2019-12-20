@@ -1,0 +1,196 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Supplementary Notebook: Features\n",
+    "\n",
+    "This notebook will familiarize you with the dataset you will be using in the Recommender System notebook in this course. Most of this should be review from courses 2 & 3, but this should be a good refresher for those who may have forgotten. We will discuss how to obtain certain features from our data using the dataset found here. https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Digital_Video_Games_v1_00.tsv.gz"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### The Data: Amazon Video Game Reviews\n",
+    "\n",
+    "This dataset is a series of reviews and ratings from Amazon.\n",
+    "\n",
+    "We will import the data and set up our dataset below."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import gzip\n",
+    "path = \"path\"\n",
+    "\n",
+    "f = gzip.open(path, 'rt', encoding=\"utf8\")\n",
+    "header = f.readline()\n",
+    "header = header.strip().split('\\t')\n",
+    "dataset = []\n",
+    "\n",
+    "for line in f:\n",
+    "    fields = line.strip().split('\\t')\n",
+    "    d = dict(zip(header, fields))\n",
+    "    dataset.append(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In the next cell we will display our header. This header is a list of the features that each element in our dataset. The following cell will display how to view an entry, and the one after that how to get a specific value out of an entry."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#list of features\n",
+    "header"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#general format of dataset entry\n",
+    "dataset[0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#pulling a feature out of\n",
+    "dataset[0]['product_title']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lets see how many data entries contain a 'NA' value by creating a second dataset which ignores entries with 'NA' values."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#this function will help with the below dataset cleaning\n",
+    "def cleaned(datum, feat_list):\n",
+    "    for f in feat_list:\n",
+    "        if datum[f] == 'NA':\n",
+    "            return False\n",
+    "    return True\n",
+    "\n",
+    "dataset_cleaned = [d for d in dataset if cleaned(d, header)]\n",
+    "\n",
+    "len(dataset) == len(dataset_cleaned)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice the two are equal! This is because the amazon datasets used in this course are pre-cleaned. Meaning that they contain no missing values. You may not always have this with your data, so be sure to clean your data before using!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Try this!\n",
+    "\n",
+    "Next, try to write a function that replaces any 'NA' value of an entry with the average. (Note: The amazon data does have text entries as well but we'll use the new feature set defined below, which only cover a few numerical columns.) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "num_features = ['star_rating','helpful_votes','total_votes']\n",
+    "\n",
+    "#notice avg is an input here, so it would be calculated outside of this for each individual feature\n",
+    "def replace_w_avg(datum, feat_list, avg_list):\n",
+    "    ### YOUR CODE HERE\n",
+    "    #Note, datum is a dictionary entry and all lengths are the same between the lists and \n",
+    "    #the number of key/value pairs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Test for previous function\n",
+    "test_dat = [{'star_rating': 3, 'helpful_votes': 3, 'total_votes': 0},\n",
+    "            {'star_rating': 2, 'helpful_votes': 4, 'total_votes': 3},\n",
+    "            {'star_rating': 3, 'helpful_votes': 2, 'total_votes': 3},\n",
+    "            {'star_rating': 2, 'helpful_votes': 4, 'total_votes': 1},\n",
+    "            {'star_rating': 4, 'helpful_votes': 1, 'total_votes': 2}]\n",
+    "#note this was randomly generated such that each numeric value was an int between 0-4\n",
+    "\n",
+    "# the calculated averages\n",
+    "avg_list = [2.8, 2.8, 1.8]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "test_datum = {'star_rating': 'NA', 'helpful_votes': 3, 'total_votes': 'NA'}\n",
+    "\n",
+    "replace_w_avg(test_datum, num_features, avg_list) == {'star_rating': 2.8, 'helpful_votes': 3, 'total_votes': 1.8}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## There we go!\n",
+    "\n",
+    "This should have been a quick refresher on data features, transformations, and missing values. This example is all based on Categorical data, but the same principles apply for each feature which would represent a time step (similar to the rating:month example in the Temporal data video.)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

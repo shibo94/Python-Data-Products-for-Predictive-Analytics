@@ -43,3 +43,32 @@ matrix([3.26],
         [aaa],
         [bbb],
         [ccc])
+
+#L5 Autoregression
+import numpy
+path = ".csv"
+f= =open(path,'r')
+
+dataset=[]
+header = f.readline().strip().split(',')
+for line in f:
+    line = line.split(',')
+    dataset.append(line)
+dataset = [d for d in dataset if d[5] != 'NA']
+def feature(dataset, ind, windowSize):
+    feat = [1]
+    previousValues = [float([d[5]]) for d in dataset[ind-windowSize:ind]]
+    return feat + previousValues
+windowSize = 10
+N = len(dataset)
+X = [feature(dataset, ind, windowSize) for ind in range(windowSize,N)]
+X[:10]
+theta,residuals,rank,s = numpy.linalg.lstsq(X,y)
+theta
+def feature(dataset, ind, windowSize):
+    feat = [1,float(dataset[ind][7]),float(dataset[ind][8])],float(dataset[ind][10])]
+    previousValues = [float(d[5]) for d in dataset[ind-windowSize:ind]]
+    return feat + previousValues
+X = [feature(dataset, ind, windowSize) for ind in range(windowSize,N)]
+theta, residuals, rank, s = numpy.linalg.lstsq(X,y)
+theta
