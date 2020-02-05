@@ -89,3 +89,18 @@ correctPredictionsTest = PredictionsTest == y_test
 
 sum(correctPredictionsTrain) / len(correctPredictionsTrain) # Training accuracy
 sum(correctPredictionsTest) / len(correctPredictionsTest)# Test  accuracy
+
+#L3 Gradient Descent in Python
+path = "datasets/PRSA_data_2010.1.1-2014.12.31.csv"
+f = open(path, 'r')
+dataset = []
+header = f.readline().strip().split(',')
+for line in f:
+    line = line.split(',')
+    dataset.append(line)
+header.index('pm2.5')
+out[5]
+dataset = [d for d in dataset if d[5] != 'NA']
+def feature(datum):
+    feat = [1, float(datum[7])]
+    return feat
