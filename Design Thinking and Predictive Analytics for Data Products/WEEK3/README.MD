@@ -69,3 +69,47 @@ The outcome (label) for l​inear regression can have any one of an infinite set
 7.W​hat is true of Support Vector Machines (SVMs)?  
 S​VMs use kernel functions to divide classes/labels.  
 S​VMs are memory-efficient since they use a subset of training points rather than all the points  
+
+# Review: Gradient Descent
+1.W​hy do we initialize theta_0 (offset parameter) to the mean value of the output labels?  
+T​o help the model converge faster  
+2.W​hat are some pitfalls we should watch out for when using TensorFlow to compute a gradient descent?  
+
+W​e should explicitly define our variables as variables, rather than leaving them as constants  
+W​e should convert our vector of labels to a TensorFlow column vector, rather than a row vector  
+
+# Quiz: More on Classification
+1.Which of the following are true about gradient descents?  
+
+Mathematically, it is a partial derivative with respect to its inputs.  
+
+It is used as a​ way to update the parameters of your model.  
+
+T​he size of each iterative step in the direction of steepest descent is called the learning rate.  
+
+It is an optimization procedure used with many machine learning algorithms to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient.  
+
+2.W​hy do we use separate training and testing datasets?  
+We use training sets to build our model and testing sets to see how well our model performs on never-before-seen data.   
+
+3.W​hat does the TensorFlow method tf.constant() do for us?
+It creates a tensor (generalized matrix) populated with the given values.  
+
+4.W​hat is the main advantage of TensorFlow for gradient descents?   
+
+TensorFlow computes the gradient with various built-in functions like optimizer.minimize() and tf.train.AdamOptimizer().
+
+
+5.By what factor is our Theta modified in each iteration of Gradient Descent in Python?  
+
+Learning Rate * dTheta
+
+6.In a data set containing n variables, what is the maximum number of variables usable to calculate a specific feature?
+
+n-1
+
+7.What will happen if all values of theta_n = 0 for n > 0? (Say theta_0 = 1)  
+
+The function will be constant.  
+
+The function is independent of the other variables.  
