@@ -204,5 +204,12 @@ for line in f:
 header.index('pm2.5')
 dataset = [d for d in dataset if d[5] != 'NA']
 def feature(datum):
-    feat = [1, float(datum[7])]
+    feat = [1, float(datum[7]), float(datum[8]), float(datum[10])]
     return feat
+
+X = [feature(d) for d in dataset]
+y = [float(d[5]) for d in dataset]
+
+import tensorflow as tf
+y = tf.constant(y ,shape=[len(y),1])
+Second thing here is the shape operation, all that's doing is converting y to a column vector rather than a row vector.
