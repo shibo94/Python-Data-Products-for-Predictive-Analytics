@@ -213,3 +213,21 @@ y = [float(d[5]) for d in dataset]
 import tensorflow as tf
 y = tf.constant(y ,shape=[len(y),1])
 Second thing here is the shape operation, all that's doing is converting y to a column vector rather than a row vector.
+K = len(X[0])
+the dimensionality of our model, or the number of features we have
+def MSE(X, y theta):
+    return tf.reduce_mean((tf.matmul(X,theta) - y)**2)
+theta = tf.Variable(tf.constant[0.0]*K,shape=[K,1])
+optimizer = tf.train.AdamOptimizer(0.01)
+objective = MSE(X,y,theta)
+train = optimizer.minimize(objective)
+sess = tf.Session()
+sess.run(init)
+
+for iteration in range(1000):
+    cvalues = sess.run([train,objective])
+    print("objective = =" + str(cvalues[1]))
+    
+with sess.as_default():
+    print(MSE(X,y,theta).eval())
+    print(theta,eval())
