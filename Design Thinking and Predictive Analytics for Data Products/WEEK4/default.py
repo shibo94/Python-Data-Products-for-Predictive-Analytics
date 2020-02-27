@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 """
 Spyder Editor
 
@@ -221,6 +221,7 @@ theta = tf.Variable(tf.constant[0.0]*K,shape=[K,1])
 optimizer = tf.train.AdamOptimizer(0.01)
 objective = MSE(X,y,theta)
 train = optimizer.minimize(objective)
+init = tf.global_variables_initializer
 sess = tf.Session()
 sess.run(init)
 
