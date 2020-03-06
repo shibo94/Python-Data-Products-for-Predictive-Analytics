@@ -14,7 +14,8 @@ Both sets should be r​andomized
 # Review: Classification Diagnostics
 1.The robot apocalypse has arrived and is trying to identify all humans for "processing". IAJM-3000 stops you in your tracks and scans your barcode tattoo. There is a soft beep as the light flashes green, telling IAJM-3000 you are a robot and not human. What is this an example of?  
 
-False negative  （不全）
+False negative  
+A​ close shave  
 
 2.Fill in the blank: "T​he ______ confidence is found the ______ from the decision boundary in the ______ direction."  
 
