@@ -38,20 +38,25 @@ def MSE(pred, actual):
 | Actual A: [1, 21, 5, 7, 3.2, 4.2]		     |    |
 | P​rediction B: [1, 2, 3, 4]		     | 5   |
 | Actual B: [4, 3, 2, 1]		     |   |
+
 3.G​iven a MSE in the features of 0.2 and a variance in the labels of 0.8, what would the R^2 statistic be?  
 0.75  
 equation 1 - (MSE / Var)  
+
 4.We run our model and our R^2 is 1. What is the MSE?  
 0  
+
 5.W​hy do we evaluate our model using a testing set?  
 To detect and avoid possible overfitting  
 B​ecause a good model is one that generalizes to new data  
 T​o validate diagnostics like MSE or R^2  
+
 6.S​elect the correctly paired statements.  
 T​rue Positive -- labeled as True -- predicted as True  
 T​rue Negative -- labeled as False -- predicted as False  
 F​alse Negative -- labeled as True -- predicted as False  
 False Positive -- labeled as False -- predicted as True  
+
 7.W​hat is the balanced error rate from the data below? Remember that you need to calculate the false positive rate and false negative rate.  
 | Prediction      | Label     | Result     | Count     |
 | ---------- | :-----------:  | :-----------: | :-----------: |
