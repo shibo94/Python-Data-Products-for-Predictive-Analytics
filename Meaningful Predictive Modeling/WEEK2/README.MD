@@ -24,7 +24,7 @@ C​ount the number of non-zero parameters in theta
 (the L1 norm measures.)   
 
 Measure the amount of variance in the parameters
-(Also what the L2 norm measures.)
+(Also what the L2 norm measures.) 
 
 # Diagnostics for Data
 1.W​hat is the MSE?
