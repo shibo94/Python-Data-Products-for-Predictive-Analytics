@@ -85,3 +85,49 @@ wordWeights.sort()
 wordWeights[:10]
 wordWeights[-10:]    
 
+from sklearn import linear_model
+help(linear_model.Ridge)
+
+model = linear_model.Ridge(1,0, fit_intercept=False)
+model.fit(X,y)
+theta = model.coef_
+wordWeights = list(zip(theta, words + ['offset']))
+wordWeights.sort()
+wordWeigts[:10]
+wordWeights[-10:]
+
+predictions = model.predict(X)
+differences = [(x-y)**2 for (x,y) in zip(predictions,y)]
+MSE=sum(differences) / len(differences)
+print("MSE = " str(MSE))
+FVU = MSE / numpy.var(y)
+R2 = 1 -FVU
+print("R2 = "+str(R2))
+
+y_class = [(rating > 3) for rating in y]
+model = linear_model.LogisticRegression()
+model.fit(X,y_class)
+predictions = model.predict(X)
+correct = predictions ==y_class
+accuracy = sum(correct)/len(correct)
+print("Accuracy = " str(accuracy))
+
+TP = sum([(p and l) for (p.l) in zip(predictions,y_class)])
+FP = sum([(p and not l) for (p,l) in zip(predictions,y_class)])
+TN = sum([not p and not l]) for  (p,l) in zip(predictions,y_class)])
+FN = sum([(not p and l) for (p,l) in zip(predictions,y_class)])
+
+print("TP = " +str(TP))
+print("FP = " +str(TP))
+print("TN = " +str(TP))
+print("FN = " +str(TP))
+
+accuracy:
+(TP + TN)/(TP + FP + TN +FN)
+The True Positive Rate
+TPR=TP/(TP+FN)
+The True Negative Rate
+TNR = TN/(TN+FP)
+Balanced Error Rate
+BER = 1 -1/2 *(TPR+TNR)
+print("Balanced Error Rate=" + str(BER))
