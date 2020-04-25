@@ -83,24 +83,22 @@ Recall: 2​0/28
 Precision: 20/24  
 
 
-8.B​ased on your answer above, what is the F1 score?
-10/13  
+8.B​ased on your answer above, what is the F1 score?  
+10/13   
 
-9.Write a function named extract_popular that takes in a string and returns a sorted list of the letters in that string from most popular to least popular. This function should be case-insensitive (e.g. Apple and apple are the same) and strip punctuation. Spaces at the ends of a string also count as spaces (e.g. "apple " will result in one space character).
+9.Write a function named extract_popular that takes in a string and returns a sorted list of the letters in that string from most popular to least popular. This function should be case-insensitive (e.g. Apple and apple are the same) and strip punctuation. Spaces at the ends of a string also count as spaces (e.g. "apple " will result in one space character).  
 
-You do not need to account for edge cases. Review the video lecture "Setting Up a Codebase for Evaluation and Validation" if needed. The defaultdict and string libraries have been added for you already.
+You do not need to account for edge cases. Review the video lecture "Setting Up a Codebase for Evaluation and Validation" if needed. The defaultdict and string libraries have been added for you already.  
 
-M​ethod Header
+M​ethod Header  
 
 ```html
 def extract_popular(textstring):
 ```
 I​nput: t​extstring - a string of random words in different cases and containing punctuation
 R​eturn: a sorted list of unique letters contained in textstring in descending order of popularity.
-T​est Cases  
+T​est Cases   
 | Input	      | Output     |
 | ---------- | :-----------:  |
-| "A man, a plan, a canal: Panama"		     | [(10, 'a'), (6, ' '), (4, 'n'), (2, 'p'), (2, 'm'), (2, 'l'), (1, 'c')]
-	    |
-| "Testing, attention please."		     | [(5, 't'), (4, 'e'), (3, 'n'), (2, 's'), (2, 'i'), (2, 'a'), (2, ' '), (1, 'p'), (1, 'o'), (1, 'l'), (1, 'g')]
-	    |
+| "A man, a plan, a canal: Panama"		     | [(10, 'a'), (6, ' '), (4, 'n'), (2, 'p'), (2, 'm'), (2, 'l'), (1, 'c')]|
+| "Testing, attention please."		     | [(5, 't'), (4, 'e'), (3, 'n'), (2, 's'), (2, 'i'), (2, 'a'), (2, ' '), (1, 'p'), (1, 'o'), (1, 'l'), (1, 'g')]|
