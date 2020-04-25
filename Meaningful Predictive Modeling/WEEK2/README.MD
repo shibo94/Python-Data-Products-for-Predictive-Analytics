@@ -24,61 +24,83 @@ C​ount the number of non-zero parameters in theta
 (the L1 norm measures.)   
 
 Measure the amount of variance in the parameters
-(Also what the L2 norm measures.) 
+(Also what the L2 norm measures.)
 
-# Diagnostics for Data
-1.W​hat is the MSE?
-T​he sum of the squared differences between actual and predicted values, divided by the number of values.
+# Review: Evaluating a Model
 
-2.G​iven a list of predictions and corresponding list of actual values, write a function named MSE to compute the MSE. You may reference other questions or videos. You do not need to account for edge cases here.
-M​ethod Header:
-Y​ou may copy and paste this to start your code below.
+1.W​hat does the first parameter correspond to in sklearn's Ridge model, as shown below?
+
 ```html
-def MSE(pred, actual):
+from sklearn import linear_model
+model = linear_model.Ridge(3.0, fit_intercept=False)
 ```
-| Input	      |Output (MSE)     |
-| ---------- | :-----------:  |
-| P​rediction A: [1, 222, 55, 77, 33, 41]	     | 8340.546666666667   |
-| Actual A: [1, 21, 5, 7, 3.2, 4.2]		     |    |
-| P​rediction B: [1, 2, 3, 4]		     | 5   |
-| Actual B: [4, 3, 2, 1]		     |   |
+The strength of the regularization  
+2.W​hat is the True Positive Rate?  
+T​he number of True Positives divided by the sum of True Positives and False Negatives   
 
-3.G​iven a MSE in the features of 0.2 and a variance in the labels of 0.8, what would the R^2 statistic be?
-0.75
-equation 1 - (MSE / Var)
 
-4.We run our model and our R^2 is 1. What is the MSE?
-0
+# Week 2 Assessment
+1.Which of the following are common definitions of model complexity?  
 
-5.W​hy do we evaluate our model using a testing set?
-To detect and avoid possible overfitting
-B​ecause a good model is one that generalizes to new data
-T​o validate diagnostics like MSE or R^2
+T​he number of non-zero parameters in θ  
 
-6.S​elect the correctly paired statements.
-T​rue Positive -- labeled as True -- predicted as True
-T​rue Negative -- labeled as False -- predicted as False
-F​alse Negative -- labeled as True -- predicted as False
-False Positive -- labeled as False -- predicted as True
+T​he amount of variance in parameters in θ  
 
-7.W​hat is the balanced error rate from the data below? Remember that you need to calculate the false positive rate and false negative rate.
+2.H​ow can we encourage more simplicity in our models?  
+
+B​y minimizing the L1 and L2 norms
+
+3.Fill in the blank: "I​f we penalize the L1-norm, we will tend to get a model with ______ features. If we penalize the L2-norm, we will tend to get a model with ______ features."  
+
+
+s​parse --- uniform  
+
+4.W​hat does a cost function do?  
+P​enalizes model complexity  
+
+C​orrect! A cost function can be defined as "measure of how wrong the model is in terms of its ability to estimate the relationship between X and y". The cost will grow as complexity does. We tend to want to minimize the cost function.  
+
+
+5.W​hat is regularization (in the world of machine learning, data, and statistics)?  
+T​he addition of a penalty to avoid overfitting and increase generalization  
+
+6.W​hat is ridge regression?  
+A​ least squares linear regression model that uses the L2-norm (squared magnitude) for regularization  
+
+7.G​iven the table below, what is the recall and precision, respectively?
+
+
 | Prediction      | Label     | Result     | Count     |
 | ---------- | :-----------:  | :-----------: | :-----------: |
-| T​rue	     | T​rue	    | T​rue Positive	     | 10     |
-| T​rue	     | F​alse	    | F​alse Positive		     | 5     |
-| ​False		     | T​rue	    | ​False Negative	     | 7     |
+| T​rue	     | T​rue	    | T​rue Positive	     | 20     |
+| T​rue	     | F​alse	    | F​alse Positive		     | 4     |
+| ​False		     | T​rue	    | ​False Negative	     | 8     |
 | ​False		     | ​False		    | True Negative		     | 12     |
 
-6/17
 
-8.G​iven the following labels and confidence scores, what would be the precision@5?
-| y      | Confidence     |
+Recall: 2​0/28  
+
+Precision: 20/24  
+
+
+8.B​ased on your answer above, what is the F1 score?
+10/13  
+
+9.Write a function named extract_popular that takes in a string and returns a sorted list of the letters in that string from most popular to least popular. This function should be case-insensitive (e.g. Apple and apple are the same) and strip punctuation. Spaces at the ends of a string also count as spaces (e.g. "apple " will result in one space character).
+
+You do not need to account for edge cases. Review the video lecture "Setting Up a Codebase for Evaluation and Validation" if needed. The defaultdict and string libraries have been added for you already.
+
+M​ethod Header
+
+```html
+def extract_popular(textstring):
+```
+I​nput: t​extstring - a string of random words in different cases and containing punctuation
+R​eturn: a sorted list of unique letters contained in textstring in descending order of popularity.
+T​est Cases  
+| Input	      | Output     |
 | ---------- | :-----------:  |
-| 1​	     |  1.5    |
-| 1​	     |  0.3    |
-| -1​	     |  0.9    |
-| -1​	     |  1.1    |
-| -1​	     |  0.2    |
-| 1​	     |  0.7    |
-
-3/5
+| "A man, a plan, a canal: Panama"		     | [(10, 'a'), (6, ' '), (4, 'n'), (2, 'p'), (2, 'm'), (2, 'l'), (1, 'c')]
+	    |
+| "Testing, attention please."		     | [(5, 't'), (4, 'e'), (3, 'n'), (2, 's'), (2, 'i'), (2, 'a'), (2, ' '), (1, 'p'), (1, 'o'), (1, 'l'), (1, 'g')]
+	    |
