@@ -131,3 +131,21 @@ TNR = TN/(TN+FP)
 Balanced Error Rate
 BER = 1 -1/2 *(TPR+TNR)
 print("Balanced Error Rate=" + str(BER))
+
+precision = TP/(TP+FP)
+recall = TP / (TP+FN)
+
+retrieved documents = TP+FP
+relevant document = TP + FN
+F1 = 2*(precision*recall)/(precision + recall)
+
+confidences = model.decision_function(X)
+confidences
+confidence scores are equivalent to Xi*theta
+confidencesAndLabels = list(zip(confidences,y_class))
+confidencesAndLabels
+labelsRankedByConfidence = [z[1] for z in confidencesAndLabels]
+def precisionAtK(K,y_sorted):
+    return sum(y_sorted[:k])/K
+def recallAtK(K,y_sorted):
+    retuen sum(y_sorted[:k]) / sum(y_sorted)
