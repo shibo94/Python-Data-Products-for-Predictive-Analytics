@@ -102,3 +102,23 @@ T​est Cases
 | ---------- | :-----------:  |
 | "A man, a plan, a canal: Panama"		     | [(10, 'a'), (6, ' '), (4, 'n'), (2, 'p'), (2, 'm'), (2, 'l'), (1, 'c')]|
 | "Testing, attention please."		     | [(5, 't'), (4, 'e'), (3, 'n'), (2, 's'), (2, 'i'), (2, 'a'), (2, ' '), (1, 'p'), (1, 'o'), (1, 'l'), (1, 'g')]|
+
+```html
+# Useful libraries
+from collections import defaultdict
+import string
+def extract_popular(textstring):
+  words=textstring
+  wordslist=list(words.lower())
+  wordslist.sort(reverse=True)
+  wordsrev=''.join(wordslist)
+  wordCount = defaultdict(int)
+  punctuation = set(string.punctuation)
+  for d in wordsrev:
+    if not d in punctuation:
+      wordCount[d] += 1
+  answer=[]
+  for k, v in sorted(wordCount.items(), key=lambda item: item[1],reverse=True):
+    answer.append((v,k))
+  return answer
+  ```
