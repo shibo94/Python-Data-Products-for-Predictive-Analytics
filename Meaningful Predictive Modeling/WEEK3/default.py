@@ -10,15 +10,15 @@ from collections import defaultdict
 import string
 import random
 
-path=
+path="amazon_reviews_us_Gift_Card_v1_00.tsv"
 
-f = gzip.open(path,'rt',encoding='utf8')
+f = open(path,'rt',encoding='utf8')
 
 header = f.readline()
 header = header.strip().split('\t')
 
 dataset=[]
-for line in f:
+for d in f:
     fields = line.strip().split('\t')
     d['star_rating'] = int(d['star_rating'])
     d['helpful_votes'] = int(d['helpful_votes'])
